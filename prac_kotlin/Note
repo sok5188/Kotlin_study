@@ -110,3 +110,34 @@ init{
 final 상태라서 오버라이딩을하든 상속을하든 다 open되어 있는 애들로만 할수있다.
 여기서 오버라이딩은 자바에서처럼 오버라이딩할 함수 앞에 override붙여주면 된다.
 super이용해서 호출하면 뭐 부모의 함수도 쓸수있음
+
+
+Lamda
+value처럼 쓸수있는 익명함수.
+1.메소드의 파라미터로 넘겨줄수있음
+2. return 값으로 사용할 수 있음
+val name:Type = {argument -> code}
+val sqr:(Int)->Int={num->num*num} 이런식으로 쓰던지
+val sqr={num:Int->num*num} 이런식으로 써서 컴파일러가 type추론이 가능하게끔 해주어야 한다.
+
+확장함수
+val pizza:String.()->String={this+"pizza is good"}
+var a="he said"
+var b="she said"
+println(a.pizza())
+println(b.pizza())
+이런식으로 string 타입을 확장하고 input인자를 가지지 않으며 string을 리턴하는 확장함수를 선언함. 여기서 Lamda부분의 this는 pizza를 호출한 string인 a의 값임.
+
+fun extst(name:String,age:Int):String{
+    val intro : String.(Int)->String={"I am ${this} and ${it}years old"}
+}
+이처럼 두개의 인자를 받고 string을 리턴하는 함수extst의 
+intro는 string이 int를 데리고와서 string으로 리턴하는 변수이고. this는 위에서 처럼 intro호출한 string값이고 it은 인자가하나일때 사용하는 인자 지칭 명령어임.즉, it은 Int를 의미
+
+fun invokeLamda(lamda:(Double)->Boolean):Boolean{
+    return lamda(5.2343)
+}
+이런식으로 함수의 파라미터로 사용할 수 있는데
+println(invokeLamda(lam))
+    println(invokeLamda({it>3.22}))
+    println(invokeLamda { it>3.22 })
