@@ -1,3 +1,7 @@
+###ide 커맨드
+복사하고싶은 줄에 마우스 대고 crtl+D하면 그대로 밑에 복사된다 !!
+crtl+A하면 전체선택임
+
 모든 함수를 fun으로 시작
 return이 없는 경우 생략, 있으면 parameter뒤에 : Int 이런식으로 지정
 parameter는 int a가  아닌 a : Int 이런식으로 
@@ -138,6 +142,40 @@ fun invokeLamda(lamda:(Double)->Boolean):Boolean{
     return lamda(5.2343)
 }
 이런식으로 함수의 파라미터로 사용할 수 있는데
-println(invokeLamda(lam))
-    println(invokeLamda({it>3.22}))
-    println(invokeLamda { it>3.22 })
+println(invokeLamda(lam)) 기본적으로 val lam={num:Double ->num==4.3213} 이렇게 lam을 만들어서 넣을수있고
+println(invokeLamda({it>3.22})) 이렇게 invokeLamda의 it인 Double값 5.2343을 이용해서 lamda식을 바로 만들어서 넣을수 있음
+println(invokeLamda { it>3.22 }) 얘는 위에놈이랑 같은건데 invokeLamda(){}에서 input이 없으니 ()을 생략한 거임..
+이렇게 앞에 일반 java처럼 쓰는게 아닌 ()부분들을 생략하고 람다식으로 {} 바로 갈겨버릴수 있는 애들이 존재함 (자바인터페이스, 메소드1개)조건이 있긴하지만 가능한 상황에서는 쓰는게 매우 편함.
+
+
+Data class
+data class 는 생성시 자동으로 toString(), hashCode(),equals(),copy()가 생성됨.
+일반 class를 똑같이 만들어서 생성하면 그 변수를 출력하면 tostring이 없으니 주소값이나옴
+
+
+Companion object
+class Book private constructor(val id: Int, val name: String){
+    companion object{
+        fun create()=Book(30,"trash")
+    }
+}
+fun main(){
+    val b=Book.Companion.create()
+    //b=Book.create() 도 가능
+    println("${b.id} / "+b.name)
+}
+
+여기서처럼 private 메소드나 프로퍼티를 사용할 수 있게해주는 놈임
+companion object는 이름을 가질수 있고 인터페이스를 상속받을수도 있다.
+여기서 이름을 가지게 된다면 book.companion이 아닌 book.이름 혹은 book.메소드 와 같이
+생략해 주어야 한다.
+
+
+object
+Singleton Pattern 이다. == 딱 한번만 실행된다는 뜻. static이라고 생각하면 된다.
+
+
+*심리테스트 앱
+navigation view는 fragment단위(화면)로 앱을 보여줌
+
+lateinit : 선언만하고 나중에 값을 할당해줄것임을 의미하는 지칭어

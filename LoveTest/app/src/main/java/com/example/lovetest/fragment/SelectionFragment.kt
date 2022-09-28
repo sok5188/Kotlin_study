@@ -57,7 +57,7 @@ class SelectionFragment : Fragment(), View.OnClickListener {
             R.id.option_1 -> {navigateWithIdx(1)}
             R.id.option_2 -> {navigateWithIdx(2)}
             R.id.option_3 -> {navigateWithIdx(3)}
-            R.id.option_4 -> {navigateWithIdx(4)}
+            R.id.option_4 -> {navigateWithIdx()}
             R.id.btn_back -> {
                 navController.popBackStack()
             }
