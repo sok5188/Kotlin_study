@@ -1,15 +1,15 @@
-package com.example.lovetest.fragment
+package com.example.guess_the_music.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import com.example.lovetest.R
-import kotlinx.android.synthetic.main.fragment_selection.*
+import com.example.guess_the_music.R
+import kotlinx.android.synthetic.main.fragment_game1.*
+import kotlinx.android.synthetic.main.fragment_game2.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -18,10 +18,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [SelectionFragment.newInstance] factory method to
+ * Use the [Game2Fragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SelectionFragment : Fragment(), View.OnClickListener {
+class Game2Fragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -39,34 +39,15 @@ class SelectionFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_selection, container, false)
+        return inflater.inflate(R.layout.fragment_game2, container, false)
     }
     lateinit var navController: NavController
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController=Navigation.findNavController(view)
-        btn_back.setOnClickListener(this)
-        option_1.setOnClickListener(this)
-        option_2.setOnClickListener(this)
-        option_3.setOnClickListener(this)
-        option_4.setOnClickListener(this)
-    }
-
-    override fun onClick(p0: View?) {
-        when(p0?.id){
-            R.id.option_1 -> {navigateWithIdx(1)}
-            R.id.option_2 -> {navigateWithIdx(2)}
-            R.id.option_3 -> {navigateWithIdx(3)}
-            R.id.option_4 -> {navigateWithIdx(4)}
-            R.id.btn_back -> {
-                navController.popBackStack()
-            }
+        navController= Navigation.findNavController(view)
+        btn_home2.setOnClickListener{
+            navController.navigate(R.id.action_game2Fragment_to_mainFragment)
         }
-    }
-    fun navigateWithIdx(index : Int){
-        val bundle = bundleOf("index" to index)
-
-        navController.navigate(R.id.action_selectionFragment_to_resultFragment2,bundle)
     }
     companion object {
         /**
@@ -75,12 +56,12 @@ class SelectionFragment : Fragment(), View.OnClickListener {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment SelectionFragment.
+         * @return A new instance of fragment Game2Fragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            SelectionFragment().apply {
+            Game2Fragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

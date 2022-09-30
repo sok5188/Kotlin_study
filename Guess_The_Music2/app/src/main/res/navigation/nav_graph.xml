@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.guess_the_music.Fragment.MainFragment"
+        android:label="fragment_main2"
+        tools:layout="@layout/fragment_main2" >
+        <action
+            android:id="@+id/action_mainFragment_to_game1Fragment"
+            app:destination="@id/game1Fragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_game2Fragment"
+            app:destination="@id/game2Fragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_game3Fragment"
+            app:destination="@id/game3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/game1Fragment"
+        android:name="com.example.guess_the_music.Fragment.Game1Fragment"
+        android:label="fragment_game1"
+        tools:layout="@layout/fragment_game1" >
+        <action
+            android:id="@+id/action_game1Fragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/game2Fragment"
+        android:name="com.example.guess_the_music.Fragment.Game2Fragment"
+        android:label="fragment_game2"
+        tools:layout="@layout/fragment_game2" >
+        <action
+            android:id="@+id/action_game2Fragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/game3Fragment"
+        android:name="com.example.guess_the_music.Fragment.Game3Fragment"
+        android:label="fragment_game3"
+        tools:layout="@layout/fragment_game3" >
+        <action
+            android:id="@+id/action_game3Fragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>
